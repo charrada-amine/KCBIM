@@ -1,0 +1,209 @@
+:root {
+  --blue-dark: #0f1e3d;
+  --blue-mid: #1e3a8a;
+  --blue-bright: #2563eb;
+  --blue-accent: #3b82f6;
+  --white: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.07);
+  --glass-border: rgba(255, 255, 255, 0.15);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at center, var(--blue-mid) 0%, var(--blue-dark) 100%);
+  font-family: 'Barlow', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Animated background circles ── */
+.bg-circles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.25;
+}
+
+.circle-1 {
+  width: 400px;
+  height: 400px;
+  background: var(--blue-bright);
+  top: -100px;
+  left: -100px;
+  animation: float1 12s ease-in-out infinite;
+}
+
+.circle-2 {
+  width: 300px;
+  height: 300px;
+  background: var(--blue-accent);
+  top: 60%;
+  right: -80px;
+  animation: float2 10s ease-in-out infinite;
+}
+
+.circle-3 {
+  width: 250px;
+  height: 250px;
+  background: var(--blue-mid);
+  bottom: -60px;
+  left: 30%;
+  animation: float1 15s ease-in-out infinite reverse;
+}
+
+.circle-4 {
+  width: 180px;
+  height: 180px;
+  background: var(--blue-bright);
+  top: 20%;
+  right: 20%;
+  animation: float2 8s ease-in-out infinite;
+}
+
+.circle-5 {
+  width: 350px;
+  height: 350px;
+  background: var(--blue-accent);
+  bottom: 10%;
+  left: -80px;
+  animation: float1 13s ease-in-out infinite;
+}
+
+.circle-6 {
+  width: 200px;
+  height: 200px;
+  background: var(--blue-mid);
+  top: 10%;
+  left: 40%;
+  animation: float2 11s ease-in-out infinite reverse;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50%       { transform: translateY(-40px) scale(1.05); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50%       { transform: translateY(30px) scale(0.95); }
+}
+
+/* ── Card ── */
+.card {
+  position: relative;
+  z-index: 1;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 48px 56px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Logo ── */
+.logo {
+  display: block;
+  max-width: 200px;
+  width: 100%;
+  margin: 0 auto 32px;
+}
+
+/* ── Subtitle ── */
+.subtitle {
+  font-family: 'Barlow', sans-serif;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ── Buttons container ── */
+.buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Button base ── */
+.btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 16px 40px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+/* ── French button ── */
+.btn-fr {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: var(--white);
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+}
+
+.btn-fr:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.6);
+}
+
+/* ── English button ── */
+.btn-en {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.btn-en:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+/* ── Mobile ── */
+@media (max-width: 480px) {
+  .card {
+    padding: 32px 24px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
